@@ -1,10 +1,10 @@
 // HTTP service for API calls
 import 'dart:convert';
+import 'package:budgetbuddy_client/core/constants/constants.dart';
 import 'package:http/http.dart' as http;
-import '../constants/app_constants.dart';
 
 class ApiService {
-  static const String _devUrl = AppConstants.devServerUrl;
+  static const String _devUrl = devServerUrl;
 
   // Use dev URL for development, can switch to production later
   static String get baseUrl => _devUrl;

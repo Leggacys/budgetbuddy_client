@@ -1,11 +1,8 @@
-import 'package:budgetbuddy_client/core/constants/app_constants.dart';
+import 'package:budgetbuddy_client/core/constants/constants.dart';
 import 'package:budgetbuddy_client/features/auth/services/user_preferences_service.dart';
 import 'package:google_sign_in/google_sign_in.dart';
 import 'package:http/http.dart' as http;
 import 'package:firebase_auth/firebase_auth.dart';
-import 'package:logger/logger.dart';
-
-final logger = Logger();
 
 Future<bool> signInWithGoogle() async {
   try {

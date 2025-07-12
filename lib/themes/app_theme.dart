@@ -1,5 +1,5 @@
+import 'package:budgetbuddy_client/constants/app_constants.dart';
 import 'package:flutter/material.dart';
-import '../constants/app_constants.dart';
 
 class AppTheme {
   static ThemeData lightTheme = ThemeData(

@@ -1,6 +1,6 @@
 import 'dart:convert';
 
-import 'package:budgetbuddy_client/core/constants/app_constants.dart';
+import 'package:budgetbuddy_client/core/constants/constants.dart';
 import 'package:budgetbuddy_client/features/banking/models/bank_model.dart';
 import 'package:budgetbuddy_client/features/dashboard/pages/dashboard_page.dart';
 import 'package:budgetbuddy_client/features/banking/services/nordigen_service.dart';

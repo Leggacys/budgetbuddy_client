@@ -43,11 +43,11 @@ class UserPreferences {
 
   static Future<void> setFirstTimeUse() async {
     final SharedPreferences prefs = await SharedPreferences.getInstance();
-    await prefs.setBool('first_time_use', true);
+    await prefs.setBool('first_time_use', false);
   }
 
   static Future<bool> isFirstTimeUse() async {
     final SharedPreferences prefs = await SharedPreferences.getInstance();
-    return prefs.getBool('first_time_use') ?? false;
+    return prefs.getBool('first_time_use') ?? true;
   }
 }

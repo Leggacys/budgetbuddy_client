@@ -1,11 +1,8 @@
 import 'dart:convert';
-import 'package:budgetbuddy_client/core/constants/app_constants.dart';
+import 'package:budgetbuddy_client/core/constants/constants.dart';
 import 'package:budgetbuddy_client/features/banking/models/bank_model.dart';
 import 'package:budgetbuddy_client/features/auth/services/user_preferences_service.dart';
 import 'package:http/http.dart' as http;
-import 'package:logger/logger.dart';
-
-final logger = Logger();
 
 class NordigenService {
   /// Get list of banks for a specific country
