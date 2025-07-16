@@ -22,6 +22,14 @@
           }
         },
         {
+          "client_id": "81173432041-s7nmumr3492rpma42089n2u1ejeh3pn5.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.budgetbuddy",
+            "certificate_hash": "19188b5b3e614f9e6a9f7705bd53463a1fd38e33"
+          }
+        },
+        {
           "client_id": "81173432041-hp8esqjmsucsfp7j9grfo3fb11kvjgvu.apps.googleusercontent.com",
           "client_type": 3
         }

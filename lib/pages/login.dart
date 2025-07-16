@@ -1,3 +1,4 @@
+import 'package:budgetbuddy_client/core/constants/constants.dart';
 import 'package:budgetbuddy_client/features/dashboard/pages/dashboard_page.dart';
 import 'package:budgetbuddy_client/pages/link_bank.dart';
 import 'package:budgetbuddy_client/pages/security_explanation_page.dart';
@@ -30,7 +31,7 @@ class LoginPage extends StatelessWidget {
       if (context.mounted) {
         Navigator.pushReplacement(
           context,
-          MaterialPageRoute(builder: (context) => LinkYourBankPage()),
+          MaterialPageRoute(builder: (context) => Dashboard()),
         );
       }
     }

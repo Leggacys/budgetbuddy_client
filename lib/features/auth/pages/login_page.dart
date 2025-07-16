@@ -1,5 +1,9 @@
+import 'package:budgetbuddy_client/core/constants/constants.dart';
 import 'package:budgetbuddy_client/features/banking/pages/link_bank_page.dart';
 import 'package:budgetbuddy_client/features/auth/services/google_auth_service.dart';
+import 'package:budgetbuddy_client/pages/dashboard.dart';
+import 'package:budgetbuddy_client/pages/security_explanation_page.dart';
+import 'package:budgetbuddy_client/services/user_preferences.dart';
 import 'package:flutter/material.dart';
 
 class LoginPage extends StatelessWidget {
@@ -53,11 +57,22 @@ class LoginPage extends StatelessWidget {
                 ),
                 onPressed: () async {
                   final user = await signInWithGoogle();
-                  if (user != null) {
-                    Navigator.pushReplacement(
-                      context,
-                      MaterialPageRoute(builder: (_) => LinkYourBankPage()),
-                    );
+                  final isFirstTime = await UserPreferences.isFirstTimeUse();
+                  logger.i('User signed in: $user, First time use: $isFirstTime');
+                  if (user) {
+                    if (isFirstTime) {
+                      logger.i('Redirecting to security explanation page');
+                      Navigator.pushReplacement(
+                        context,
+                        MaterialPageRoute(builder: (_) => SecurityExplanationPage()),
+                      );
+                    } else {
+                      logger.i('Redirecting to dashboard');
+                      Navigator.pushReplacement(
+                        context,
+                        MaterialPageRoute(builder: (_) => Dashboard()),
+                      );
+                    }
                   }
                 },
               ),

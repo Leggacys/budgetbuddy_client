@@ -1,8 +1,11 @@
+import 'package:budgetbuddy_client/core/constants/constants.dart';
 import 'package:budgetbuddy_client/features/banking/pages/bank_list_page.dart';
 import 'package:budgetbuddy_client/features/dashboard/widgets/total_expenses.dart';
 import 'package:budgetbuddy_client/pages/dashboard/models/transaction_model.dart';
 import 'package:budgetbuddy_client/pages/dashboard/services/transaction_service.dart';
 import 'package:budgetbuddy_client/pages/dashboard/widgets/ring.dart';
+import 'package:budgetbuddy_client/pages/login.dart';
+import 'package:budgetbuddy_client/services/user_preferences.dart';
 import 'package:budgetbuddy_client/widgets/bottom_menu.dart';
 import 'package:flutter/material.dart';
 import 'package:google_sign_in/google_sign_in.dart';
@@ -15,13 +18,26 @@ class Dashboard extends StatefulWidget {
 }
 
 class _DashboardState extends State<Dashboard> {
+  String? userEmail;
+
   Future<int> fetchData() async {
-    List<Transaction> transactions =
+    Map<String, dynamic> transactionsData =
         await TransactionService.fetchTransactions();
-    double totalExpenses = TransactionService.calculateTotalExpenses(
-      transactions,
-    );
+    double totalExpenses = transactionsData['summary']['total_spent'] ?? 0.0;
     return totalExpenses.toInt();
+  }
+
+  @override
+  void initState() {
+    super.initState();
+    // Fetch user email from preferences
+    UserPreferences.getEmail().then((email) {
+      if (email != null) {
+        setState(() {
+          userEmail = email;
+        });
+      }
+    });
   }
 
   @override
@@ -59,12 +75,25 @@ class _DashboardState extends State<Dashboard> {
               decoration: BoxDecoration(
                 color: Color.fromARGB(255, 7, 57, 49),
               ),
-              child: Text(
-                'Menu',
-                style: TextStyle(
-                  color: Colors.white,
-                  fontSize: 24,
-                ),
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  Text(
+                    'Menu',
+                    style: TextStyle(
+                      color: Colors.white,
+                      fontSize: 24,
+                    ),
+                  ),
+                  SizedBox(height: 8),
+                  Text(
+                    userEmail ?? '',
+                    style: TextStyle(
+                      color: Colors.white70,
+                      fontSize: 16,
+                    ),
+                  ),
+                ],
               ),
             ),
             ListTile(
@@ -88,7 +117,15 @@ class _DashboardState extends State<Dashboard> {
               leading: Icon(Icons.logout),
               title: Text('Sign Out'),
               onTap: () async {
-                await GoogleSignIn().signOut();
+                if (await GoogleSignIn().isSignedIn()) {
+                  await GoogleSignIn().disconnect();
+                  Navigator.pushReplacement(
+                    context,
+                    MaterialPageRoute(builder: (_) => LoginPage()),
+                  );
+                } else {
+                  logger.i('User is not signed in.');
+                }
               },
             ),
           ],

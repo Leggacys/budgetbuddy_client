@@ -123,10 +123,17 @@ class _RootPageState extends State<RootPage> {
       }
     } else {
       if (context.mounted) {
-        Navigator.pushReplacement(
-          context,
-          MaterialPageRoute(builder: (context) => Dashboard()),
-        );
+        if (_loggedIn) {
+          Navigator.pushReplacement(
+            context,
+            MaterialPageRoute(builder: (context) => Dashboard()),
+          );
+        } else {
+          Navigator.pushReplacement(
+            context,
+            MaterialPageRoute(builder: (context) => const LoginPage()),
+          );
+        }
       }
     }
   }

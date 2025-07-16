@@ -18,18 +18,13 @@ class BottomMenu extends StatelessWidget {
             mainAxisSize: MainAxisSize.min,
             children: [
               TextButton(
-                onPressed: () {
-                  Navigator.push(
-                    context,
-                    MaterialPageRoute(builder: (context) => BankListScreen()),
-                  );
-                },
+                onPressed: onMenuPressed,
                 child: Column(
                   mainAxisSize: MainAxisSize.min,
                   children: [
-                    const Icon(Icons.add, color: Colors.white, size: 24),
+                    const Icon(Icons.menu, color: Colors.white, size: 24),
                     const Text(
-                      'Add Bank Account',
+                      'Menu',
                       style: TextStyle(color: Colors.white, fontSize: 12),
                     ),
                   ],
@@ -41,14 +36,20 @@ class BottomMenu extends StatelessWidget {
             mainAxisSize: MainAxisSize.min,
             children: [
               TextButton(
-                onPressed: onMenuPressed,
+                onPressed: () {
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(builder: (context) => BankListScreen()),
+                  );
+                },
                 child: Column(
                   mainAxisSize: MainAxisSize.min,
                   children: [
-                    const Icon(Icons.menu, color: Colors.white, size: 24),
+                    const Icon(Icons.add, color: Colors.white, size: 24),
                     const Text(
-                      'Menu',
+                      'Add Bank\nAccount',
                       style: TextStyle(color: Colors.white, fontSize: 12),
+                      textAlign: TextAlign.center,
                     ),
                   ],
                 ),

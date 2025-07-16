@@ -7,7 +7,7 @@ import 'package:budgetbuddy_client/services/user_preferences.dart';
 import 'package:http/http.dart';
 
 class TransactionService {
-  static Future<List<Transaction>> fetchTransactions() async {
+  static Future<Map<String, dynamic>> fetchTransactions() async {
     try {
       final email = await UserPreferences.getEmail();
       final url = Uri.parse(
@@ -18,31 +18,33 @@ class TransactionService {
 
       if (response.statusCode == 200) {
         final dynamic jsonData = json.decode(response.body);
-        List<dynamic> transactionsList;
 
-        if (jsonData is Map<String, dynamic>) {
-          // Response is an object like: {"transactions": [...], "status": "success"}
-          transactionsList = jsonData['transactions'] ?? [];
-        } else if (jsonData is List) {
-          // Response is directly an array like: [{"category": "food"}, {"category": "gas"}]
-          transactionsList = jsonData;
-        } else {
-          logger.d('Unexpected response format: $jsonData');
-          return [];
-        }
+        // if (jsonData is Map<String, dynamic>) {
+        //   // Response is an object like: {"transactions": [...], "status": "success"}
+        //   transactionsList = jsonData['transactions'] ?? [];
+        // } else if (jsonData is List) {
+        //   // Response is directly an array like: [{"category": "food"}, {"category": "gas"}]
+        //   transactionsList = jsonData;
+        // } else {
+        //   logger.d('Unexpected response format: $jsonData');
+        //   return [];
+        // }
 
-        List<Transaction> transactions = transactionsList
-            .map((json) => Transaction.fromJson(json as Map<String, dynamic>))
-            .toList();
+        // List<Transaction> transactions = transactionsList
+        //     .map((json) => Transaction.fromJson(json as Map<String, dynamic>))
+        //     .toList();
 
-        logger.d('Fetched ${transactions.length} transactions');
-        return transactions;
+        logger.d('Fetched ${jsonData['total_count']} transactions');
+        return {
+          'categories': jsonData['categories'],
+          'summary': jsonData['summary'],
+        };
       }
     } catch (e) {
       logger.d('Error fetching transactions: $e');
-      return [];
+      return {'categories': [], 'summary': {}};
     }
-    return [];
+    return {'categories': [], 'summary': {}};
   }
 
   static double calculateTotalExpenses(List<Transaction> transactions) {
