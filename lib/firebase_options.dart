@@ -17,10 +17,7 @@ import 'package:flutter/foundation.dart'
 class DefaultFirebaseOptions {
   static FirebaseOptions get currentPlatform {
     if (kIsWeb) {
-      throw UnsupportedError(
-        'DefaultFirebaseOptions have not been configured for web - '
-        'you can reconfigure this by running the FlutterFire CLI again.',
-      );
+      return web;
     }
     switch (defaultTargetPlatform) {
       case TargetPlatform.android:
@@ -28,15 +25,9 @@ class DefaultFirebaseOptions {
       case TargetPlatform.iOS:
         return ios;
       case TargetPlatform.macOS:
-        throw UnsupportedError(
-          'DefaultFirebaseOptions have not been configured for macos - '
-          'you can reconfigure this by running the FlutterFire CLI again.',
-        );
+        return macos;
       case TargetPlatform.windows:
-        throw UnsupportedError(
-          'DefaultFirebaseOptions have not been configured for windows - '
-          'you can reconfigure this by running the FlutterFire CLI again.',
-        );
+        return windows;
       case TargetPlatform.linux:
         throw UnsupportedError(
           'DefaultFirebaseOptions have not been configured for linux - '
@@ -50,21 +41,49 @@ class DefaultFirebaseOptions {
   }
 
   static const FirebaseOptions android = FirebaseOptions(
-    apiKey: 'AIzaSyDFIq9TQJ0OQlBdKirVuA1tdQmg3cvixsw',
-    appId: '1:81173432041:android:2f61c0a6e217299b18d278',
-    messagingSenderId: '81173432041',
-    projectId: 'budget-buddy-35521',
-    storageBucket: 'budget-buddy-35521.firebasestorage.app',
+    apiKey: 'AIzaSyAkN69V-WHXp2BH_jmFMYV5sJlkRknR9QA',
+    appId: '1:28884617565:android:f59d6f0731151d592ac0b4',
+    messagingSenderId: '28884617565',
+    projectId: 'budget-buddy-94cd2',
+    storageBucket: 'budget-buddy-94cd2.firebasestorage.app',
   );
 
   static const FirebaseOptions ios = FirebaseOptions(
-    apiKey: 'AIzaSyAyQn70B8VN3Xu3mSG2qgvUv8nH4jj2nzQ',
-    appId: '1:81173432041:ios:ea99923775785c0018d278',
-    messagingSenderId: '81173432041',
-    projectId: 'budget-buddy-35521',
-    storageBucket: 'budget-buddy-35521.firebasestorage.app',
-    androidClientId: '81173432041-7lin8slc0pc6ss6tlvph49ecdu13gaob.apps.googleusercontent.com',
-    iosClientId: '81173432041-qtd0pa99b7riegostg1484qpicii7bpd.apps.googleusercontent.com',
-    iosBundleId: 'com.example.budgetBuddy',
+    apiKey: 'AIzaSyB5eRx6gc0GYTaekI1G3UJUEjYPRV4qLHI',
+    appId: '1:28884617565:ios:1466f7eb7c31170b2ac0b4',
+    messagingSenderId: '28884617565',
+    projectId: 'budget-buddy-94cd2',
+    storageBucket: 'budget-buddy-94cd2.firebasestorage.app',
+    iosBundleId: 'com.example.budgetbuddyClient',
   );
+
+  static const FirebaseOptions web = FirebaseOptions(
+    apiKey: 'AIzaSyCPL_E1letDf3p3FiEnzFPUhwzr4188IbA',
+    appId: '1:28884617565:web:9d2b4f33ec9d9b5f2ac0b4',
+    messagingSenderId: '28884617565',
+    projectId: 'budget-buddy-94cd2',
+    authDomain: 'budget-buddy-94cd2.firebaseapp.com',
+    storageBucket: 'budget-buddy-94cd2.firebasestorage.app',
+    measurementId: 'G-F3S6WC2S8P',
+  );
+
+  static const FirebaseOptions macos = FirebaseOptions(
+    apiKey: 'AIzaSyB5eRx6gc0GYTaekI1G3UJUEjYPRV4qLHI',
+    appId: '1:28884617565:ios:1466f7eb7c31170b2ac0b4',
+    messagingSenderId: '28884617565',
+    projectId: 'budget-buddy-94cd2',
+    storageBucket: 'budget-buddy-94cd2.firebasestorage.app',
+    iosBundleId: 'com.example.budgetbuddyClient',
+  );
+
+  static const FirebaseOptions windows = FirebaseOptions(
+    apiKey: 'AIzaSyCPL_E1letDf3p3FiEnzFPUhwzr4188IbA',
+    appId: '1:28884617565:web:7c6d2294a716b6a42ac0b4',
+    messagingSenderId: '28884617565',
+    projectId: 'budget-buddy-94cd2',
+    authDomain: 'budget-buddy-94cd2.firebaseapp.com',
+    storageBucket: 'budget-buddy-94cd2.firebasestorage.app',
+    measurementId: 'G-HS0E9ZN7WV',
+  );
+
 }

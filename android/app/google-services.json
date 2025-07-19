@@ -1,56 +1,40 @@
 {
   "project_info": {
-    "project_number": "81173432041",
-    "project_id": "budget-buddy-35521",
-    "storage_bucket": "budget-buddy-35521.firebasestorage.app"
+    "project_number": "28884617565",
+    "project_id": "budget-buddy-94cd2",
+    "storage_bucket": "budget-buddy-94cd2.firebasestorage.app"
   },
   "client": [
     {
       "client_info": {
-        "mobilesdk_app_id": "1:81173432041:android:2f61c0a6e217299b18d278",
+        "mobilesdk_app_id": "1:28884617565:android:f59d6f0731151d592ac0b4",
         "android_client_info": {
           "package_name": "com.example.budgetbuddy"
         }
       },
       "oauth_client": [
         {
-          "client_id": "81173432041-lnftbv3a91pgohq1us3vefl8kh9q0in9.apps.googleusercontent.com",
-          "client_type": 1,
-          "android_info": {
-            "package_name": "com.example.budgetbuddy",
-            "certificate_hash": "16fbf395038c438407acb17249848933ad83bc24"
-          }
-        },
-        {
-          "client_id": "81173432041-s7nmumr3492rpma42089n2u1ejeh3pn5.apps.googleusercontent.com",
-          "client_type": 1,
-          "android_info": {
-            "package_name": "com.example.budgetbuddy",
-            "certificate_hash": "19188b5b3e614f9e6a9f7705bd53463a1fd38e33"
-          }
-        },
-        {
-          "client_id": "81173432041-hp8esqjmsucsfp7j9grfo3fb11kvjgvu.apps.googleusercontent.com",
+          "client_id": "28884617565-99hfhdhmpansfktr5rn8bp2j7aqng4tn.apps.googleusercontent.com",
           "client_type": 3
         }
       ],
       "api_key": [
         {
-          "current_key": "AIzaSyDFIq9TQJ0OQlBdKirVuA1tdQmg3cvixsw"
+          "current_key": "AIzaSyAkN69V-WHXp2BH_jmFMYV5sJlkRknR9QA"
         }
       ],
       "services": {
         "appinvite_service": {
           "other_platform_oauth_client": [
             {
-              "client_id": "81173432041-hp8esqjmsucsfp7j9grfo3fb11kvjgvu.apps.googleusercontent.com",
+              "client_id": "28884617565-99hfhdhmpansfktr5rn8bp2j7aqng4tn.apps.googleusercontent.com",
               "client_type": 3
             },
             {
-              "client_id": "81173432041-qtd0pa99b7riegostg1484qpicii7bpd.apps.googleusercontent.com",
+              "client_id": "28884617565-jrkbe1071r758s1vdti2obcf3cdpl8n9.apps.googleusercontent.com",
               "client_type": 2,
               "ios_info": {
-                "bundle_id": "com.example.budgetBuddy"
+                "bundle_id": "com.example.budgetbuddyClient"
               }
             }
           ]

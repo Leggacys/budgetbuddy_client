@@ -1,5 +1,4 @@
 import 'package:budgetbuddy_client/core/constants/constants.dart';
-import 'package:budgetbuddy_client/services/google_auth.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 class UserPreferences {

@@ -2,7 +2,6 @@ import 'dart:convert';
 
 import 'package:budgetbuddy_client/core/constants/constants.dart';
 import 'package:budgetbuddy_client/features/transactions/data/data_source/bank_data_source.dart';
-import 'package:budgetbuddy_client/services/google_auth.dart';
 import 'package:http/http.dart' as http;
 
 Future<List<Bank>> getBanksList(String countryCode) async {
