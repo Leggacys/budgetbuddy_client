@@ -1,12 +1,11 @@
 import 'package:budgetbuddy_client/core/constants/constants.dart';
+import 'package:budgetbuddy_client/features/auth/pages/login_page.dart';
 import 'package:budgetbuddy_client/features/banking/pages/bank_list_page.dart';
+import 'package:budgetbuddy_client/features/banking/services/transactions_service.dart';
+import 'package:budgetbuddy_client/features/dashboard/widgets/ring.dart';
 import 'package:budgetbuddy_client/features/dashboard/widgets/total_expenses.dart';
-import 'package:budgetbuddy_client/pages/dashboard/models/transaction_model.dart';
-import 'package:budgetbuddy_client/pages/dashboard/services/transaction_service.dart';
-import 'package:budgetbuddy_client/pages/dashboard/widgets/ring.dart';
-import 'package:budgetbuddy_client/pages/login.dart';
-import 'package:budgetbuddy_client/services/user_preferences.dart';
-import 'package:budgetbuddy_client/widgets/bottom_menu.dart';
+import 'package:budgetbuddy_client/core/services/user_preferences.dart';
+import 'package:budgetbuddy_client/features/dashboard/widgets/bottom_menu.dart';
 import 'package:flutter/material.dart';
 import 'package:google_sign_in/google_sign_in.dart';
 
@@ -21,10 +20,12 @@ class _DashboardState extends State<Dashboard> {
   String? userEmail;
 
   Future<int> fetchData() async {
-    Map<String, dynamic> transactionsData =
-        await TransactionService.fetchTransactions();
-    double totalExpenses = transactionsData['summary']['total_spent'] ?? 0.0;
-    return totalExpenses.toInt();
+    final transactionsData = await TransactionsService.getTransactions();
+    if (transactionsData.isEmpty) {
+      return 0; // No transactions found
+    }
+
+    return 1;
   }
 
   @override
@@ -72,26 +73,18 @@ class _DashboardState extends State<Dashboard> {
           padding: EdgeInsets.zero,
           children: [
             DrawerHeader(
-              decoration: BoxDecoration(
-                color: Color.fromARGB(255, 7, 57, 49),
-              ),
+              decoration: BoxDecoration(color: Color.fromARGB(255, 7, 57, 49)),
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   Text(
                     'Menu',
-                    style: TextStyle(
-                      color: Colors.white,
-                      fontSize: 24,
-                    ),
+                    style: TextStyle(color: Colors.white, fontSize: 24),
                   ),
                   SizedBox(height: 8),
                   Text(
                     userEmail ?? '',
-                    style: TextStyle(
-                      color: Colors.white70,
-                      fontSize: 16,
-                    ),
+                    style: TextStyle(color: Colors.white70, fontSize: 16),
                   ),
                 ],
               ),
@@ -100,10 +93,10 @@ class _DashboardState extends State<Dashboard> {
               leading: Icon(Icons.account_balance),
               title: Text('Add Bank Account'),
               onTap: () {
-                 Navigator.push(
-                    context,
-                    MaterialPageRoute(builder: (context) => BankListScreen()),
-                  );
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(builder: (context) => BankListScreen()),
+                );
               },
             ),
             ListTile(

@@ -1,8 +1,8 @@
 import 'dart:convert';
 
 import 'package:budgetbuddy_client/core/constants/constants.dart';
-import 'package:budgetbuddy_client/features/banking/models/bank_model.dart';
-import 'package:budgetbuddy_client/features/dashboard/pages/dashboard_page.dart';
+import 'package:budgetbuddy_client/features/banking/data/bank_data_source.dart';
+import 'package:budgetbuddy_client/features/dashboard/pages/dashboard.dart';
 import 'package:budgetbuddy_client/features/banking/services/nordigen_service.dart';
 import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
@@ -157,7 +157,7 @@ class _BankListScreenState extends State<BankListScreen> {
 
     try {
       debugPrint('🔗 Getting redirect URL for bank: $bankName (ID: $bankId)');
-      final link = await NordigenService.createRequisition(bankId);
+      final link = await NordingenService.createRequisition(bankId);
 
       debugPrint('🌐 URL received from server: $link');
       debugPrint('🔍 URL type: ${link.runtimeType}');
@@ -218,7 +218,7 @@ class _BankListScreenState extends State<BankListScreen> {
     return Scaffold(
       appBar: AppBar(title: Text('Banks')),
       body: FutureBuilder<List<Bank>>(
-        future: NordigenService.getBanksList('ro'),
+        future: NordingenService.getBanksList('ro'),
         builder: (context, snapshot) {
           if (snapshot.connectionState == ConnectionState.waiting) {
             return Center(child: CircularProgressIndicator());

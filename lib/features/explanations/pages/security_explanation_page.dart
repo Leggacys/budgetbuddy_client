@@ -1,5 +1,5 @@
-import 'package:budgetbuddy_client/pages/dashboard.dart';
-import 'package:budgetbuddy_client/pages/explanations/widgets/security_card.dart';
+import 'package:budgetbuddy_client/features/dashboard/pages/dashboard.dart';
+import 'package:budgetbuddy_client/features/explanations/widgets/security_card.dart';
 import 'package:flutter/material.dart';
 
 class SecurityExplanationPage extends StatefulWidget {

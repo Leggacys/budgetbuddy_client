@@ -6,7 +6,6 @@ import 'package:http/http.dart' as http;
 class ApiService {
   static const String _devUrl = devServerUrl;
 
-  // Use dev URL for development, can switch to production later
   static String get baseUrl => _devUrl;
 
   static Map<String, String> get _headers => {
@@ -19,7 +18,6 @@ class ApiService {
     'Authorization': 'Bearer $token',
   };
 
-  // GET request
   static Future<http.Response> get(
     String endpoint, {
     String? token,
@@ -38,7 +36,6 @@ class ApiService {
     return response;
   }
 
-  // POST request
   static Future<http.Response> post(
     String endpoint, {
     String? token,
@@ -55,7 +52,6 @@ class ApiService {
     return response;
   }
 
-  // PUT request
   static Future<http.Response> put(
     String endpoint, {
     String? token,
@@ -72,7 +68,6 @@ class ApiService {
     return response;
   }
 
-  // DELETE request
   static Future<http.Response> delete(String endpoint, {String? token}) async {
     final uri = Uri.parse('$baseUrl$endpoint');
 
@@ -84,7 +79,6 @@ class ApiService {
     return response;
   }
 
-  // Handle API response
   static Map<String, dynamic> handleResponse(http.Response response) {
     if (response.statusCode >= 200 && response.statusCode < 300) {
       return jsonDecode(response.body) as Map<String, dynamic>;

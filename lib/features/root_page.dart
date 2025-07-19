@@ -1,13 +1,12 @@
 import 'package:budgetbuddy_client/core/constants/constants.dart';
 import 'package:budgetbuddy_client/features/banking/pages/bank_list_page.dart';
-import 'package:budgetbuddy_client/pages/dashboard.dart';
-import 'package:budgetbuddy_client/pages/security_explanation_page.dart';
-import 'package:budgetbuddy_client/services/user_preferences.dart';
-import 'package:budgetbuddy_client/utils/bank_linking_helper.dart';
+import 'package:budgetbuddy_client/features/dashboard/pages/dashboard.dart';
+import 'package:budgetbuddy_client/features/explanations/pages/security_explanation_page.dart';
+import 'package:budgetbuddy_client/core/services/user_preferences.dart';
 import 'package:flutter/material.dart';
 import 'package:app_links/app_links.dart';
 import 'dart:async';
-import 'login_page.dart';
+import 'auth/pages/login_page.dart';
 
 class RootPage extends StatefulWidget {
   const RootPage({super.key});
@@ -18,15 +17,12 @@ class RootPage extends StatefulWidget {
 
 class _RootPageState extends State<RootPage> {
   bool _loggedIn = false;
-  bool _isLoading = false;
-  bool _hasBankLinked = false;
   late AppLinks _appLinks;
   StreamSubscription<Uri>? _linkSubscription;
 
   @override
   void initState() {
     super.initState();
-    _checkLoginAndBankStatus();
     _initDeepLinks();
   }
 
@@ -77,28 +73,6 @@ class _RootPageState extends State<RootPage> {
         );
       }
     }
-  }
-
-  void _checkLoginAndBankStatus() async {
-    setState(() {
-      _isLoading = true;
-    });
-
-    // Check if user is logged in
-    final email = await UserPreferences.getEmail();
-    final isLoggedIn = email != null && email.isNotEmpty;
-
-    // Check if user has linked a bank account
-    bool hasBankLinked = false;
-    if (isLoggedIn) {
-      hasBankLinked = await BankLinkingHelper.isBankLinked();
-    }
-
-    setState(() {
-      _loggedIn = isLoggedIn;
-      _hasBankLinked = hasBankLinked;
-      _isLoading = false;
-    });
   }
 
   @override

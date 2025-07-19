@@ -2,7 +2,7 @@ import 'dart:convert';
 
 import 'package:budgetbuddy_client/core/constants/constants.dart';
 import 'package:budgetbuddy_client/core/services/secure_storage_service.dart';
-import 'package:budgetbuddy_client/features/auth/services/user_preferences_service.dart';
+import 'package:budgetbuddy_client/core/services/user_preferences.dart';
 import 'package:google_sign_in/google_sign_in.dart';
 import 'package:http/http.dart' as http;
 import 'package:firebase_auth/firebase_auth.dart';

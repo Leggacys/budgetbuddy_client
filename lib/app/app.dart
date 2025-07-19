@@ -1,5 +1,5 @@
-import 'package:budgetbuddy_client/core/services/deep_link_handler.dart';
-import 'package:budgetbuddy_client/features/auth/pages/root_page.dart';
+import 'package:budgetbuddy_client/core/deep_link_handler.dart';
+import 'package:budgetbuddy_client/features/root_page.dart';
 import 'package:flutter/material.dart';
 import 'package:app_links/app_links.dart';
 import 'dart:async';

@@ -1,4 +1,4 @@
-import 'package:budgetbuddy_client/features/auth/pages/root_page.dart';
+import 'package:budgetbuddy_client/features/root_page.dart';
 import 'package:budgetbuddy_client/firebase_options.dart';
 import 'package:firebase_core/firebase_core.dart'; // make sure this file exists (from flutterfire configure)
 import 'package:flutter/material.dart';
